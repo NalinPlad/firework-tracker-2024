@@ -12,15 +12,16 @@ fn main() {
         .open(FILENAME)
         .expect("cannot open file");
 
-    // create a loop that waits for the user to press enter
     loop {
-        print!("\nClick enter to record a reading");
+        print!("\nrecord reading");
         let _: String = read!("{}\n");
 
         let data = chrono::Local::now();
         data_file
             .write((Utc::now().timestamp_millis().to_string() + "\n").as_bytes())
             .expect("write failed");
+
+            
 
         println!("Reading recorded at {}", data);
     }
